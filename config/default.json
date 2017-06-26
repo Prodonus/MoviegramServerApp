@@ -1,0 +1,70 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "05bcdf59158460cb7babbcdf1855224941fff4b81b2c3ca25c60bf3dc008036b53a3565e91f96961f3db656ea7230df28aa6267ac37b6b37a00bd5863be819908b950738cc0853dfca295f65d3d9f0fdd684fe491a08cb80572174cf0439f79a10624637e113d69c70b082e0a724dbd4d1f469b1213631a9c245b5f24a063219d557f93473385739e48814524f4515e6a05557274a39863665d4395d67c80e1287d636f2239ef3e4befa1106f75d62d2310f54c5617d5ebe215bc55a925de4bb2170537afb0864286dfc499219544c26e4bd7f1994c3b874d7d01148b73e0702386c4c107d7a4cd0862101cec7281290511c7f62f7004887fcf0d0bc1d370a24",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "service": "users",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "mongodb": "mongodb://localhost:27017/moviegram_server_app"
+}
